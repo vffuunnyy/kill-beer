@@ -6,6 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 
+import MaxIcon from "../assets/max.svg";
+
 const ETHANOL_DENSITY = 0.79; // г/мл
 
 export function BeerRiskTrainerV3() {
@@ -99,7 +101,7 @@ export function BeerRiskTrainerV3() {
           </motion.div>
         </div>
 
-        <Card className="mt-6 bg-white border border-slate-200 shadow-xl rounded-2xl">
+        <Card className="mt-6 bg-white border border-slate-200 shadow-xl rounded-[calc(1rem+10px)]">
           <CardContent className="p-6 space-y-6">
             {/* Ввод параметров */}
             <section className="rounded-2xl border border-amber-100 bg-gradient-to-b from-white to-amber-50/40 p-4 shadow-sm">
@@ -138,7 +140,9 @@ export function BeerRiskTrainerV3() {
                 </div>
                 <Button variant="secondary" className="rounded-full bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200" onClick={() => setCount(Math.min(maxUnits, count + 1))}>+1</Button>
                 <div className="ml-auto flex items-center gap-2">
-                  <Button className="rounded-full bg-white text-slate-800 border border-slate-200 hover:bg-slate-50" variant="secondary" onClick={setMax}>MAX</Button>
+                  <Button className="rounded-full bg-white text-slate-800 border border-slate-200 hover:bg-slate-50" variant="secondary" onClick={setMax} aria-label="Max">
+                    <img src={MaxIcon} alt="MAX" className="h-4 w-auto" />
+                  </Button>
                   <Button className="rounded-full" variant="destructive" onClick={resetAll}>Сброс</Button>
                 </div>
               </div>
@@ -186,7 +190,7 @@ export function BeerRiskTrainerV3() {
             >
               <div className="text-7xl sm:text-8xl">💀</div>
               <div className="mt-2 text-4xl sm:text-6xl font-extrabold tracking-tight text-red-500">СТОП</div>
-              <div className="mt-2 text-sm sm:text-base text-slate-200">А вот и ваша смерельная доза</div>
+              <div className="mt-2 text-sm sm:text-base text-slate-200">А вот и ваша смертельная доза</div>
               <Button className="mt-6" onClick={() => setShowOverlay(false)}>Закрыть</Button>
             </motion.div>
           </motion.div>
@@ -254,20 +258,20 @@ function GenderField({
   return (
     <div className="space-y-1">
       <Label className="text-slate-700">{label}</Label>
-      <div className="flex gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
         <Button
           variant={value === 'male' ? 'default' : 'outline'}
-          size="sm"
+          size="default"
           onClick={() => onChange('male')}
-          className="flex-1 rounded-lg"
+          className="w-full rounded-lg"
         >
           👨 Мужчина
         </Button>
         <Button
           variant={value === 'female' ? 'default' : 'outline'}
-          size="sm"
+          size="default"
           onClick={() => onChange('female')}
-          className="flex-1 rounded-lg"
+          className="w-full rounded-lg"
         >
           👩 Женщина
         </Button>
