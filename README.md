@@ -1,5 +1,7 @@
 # 🍺 Kill Beer — Alcohol Risk Indicator
 
+**🌐 Live Demo: [https://kill-beer.netlify.app/](https://kill-beer.netlify.app/)**
+
 A visual trainer for assessing alcohol consumption risks. Input your weight, drink volume, alcohol percentage, and Widmark factor to see:
 - Pure ethanol content (per unit and total)
 - Estimated blood alcohol content (Widmark formula, without metabolism)
@@ -43,10 +45,11 @@ bun run build
 ```
 
 ## 📊 How It Works
-- **Ethanol calculation**: volume(ml) * (ABV/100) * 0.79
-- **Lethal dose reference**: ~8g/kg * body weight
-- **BAC estimation**: A_g / (r * weight_kg)
-- **MAX** is calculated dynamically
+- **Ethanol calculation**: volume(ml) * (ABV/100) * 0.79 g/ml
+- **Lethal dose reference**: 5‰ BAC using Widmark formula: A_lethal = 5 * r * weight_kg
+- **BAC estimation**: C(‰) = A_g / (r * weight_kg) (Widmark formula)
+- **Gender-specific r-factors**: Male = 0.68 L/kg, Female = 0.55 L/kg
+- **MAX units** calculated dynamically from lethal dose
 
 ## ⚠️ Important Note
 This application provides simplified estimates and is not medical advice. Always drink responsibly.
